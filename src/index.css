@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-base: var(--base);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-danger: var(--danger);
+  --color-warn: var(--warn);
+  --color-ok: var(--ok);
+  --font-sans: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Segoe UI Variable Display", "Segoe UI", system-ui, sans-serif;
+}
+
+/* Dark by default; the Mica backdrop shows through the translucent base. */
+:root {
+  color-scheme: dark;
+  --base: rgb(14 14 20 / 0.62);
+  --surface: rgb(255 255 255 / 0.045);
+  --surface-2: rgb(255 255 255 / 0.08);
+  --line: rgb(255 255 255 / 0.08);
+  --fg: #f3f3f7;
+  --muted: #9b9bae;
+  --accent: #8b7bff;
+  --accent-2: #3dd6f5;
+  --danger: #ff5c77;
+  --warn: #ffb84d;
+  --ok: #3ddc97;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --base: rgb(248 248 252 / 0.66);
+    --surface: rgb(255 255 255 / 0.6);
+    --surface-2: rgb(0 0 0 / 0.05);
+    --line: rgb(0 0 0 / 0.08);
+    --fg: #16161d;
+    --muted: #686879;
+    --accent: #6a58f2;
+    --accent-2: #0aa5c9;
+    --danger: #e0294a;
+    --warn: #c77800;
+    --ok: #0f9d63;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  background: transparent;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--fg);
+  user-select: none;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border: 3px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--muted);
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+input[type="range"].slider {
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--accent) 0%,
+    var(--accent) var(--fill),
+    var(--surface-2) var(--fill)
+  );
+  outline: none;
+}
+input[type="range"].slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent), 0 2px 6px rgb(0 0 0 / 0.3);
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+input[type="range"].slider::-webkit-slider-thumb:hover {
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 40%, transparent), 0 2px 6px rgb(0 0 0 / 0.3);
+}
